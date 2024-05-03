@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>STRING ARRAYS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div  class="container">
+		<h3 class="header">String Arrays</h3>
+		<div class="sort">
+			<h4>Sorting</h4>
+			<form method="post">
+				<label>Enter a series of numbers:</label><br>
+				<input type="text" name="num"><br><br>
+				<input type="submit" class="btn" name="sort" value="Sort">
+			</form>
+		</div>
+		<div class="output">
+			
+			<?php
+
+			if(isset($_POST['sort'])) {
+				$num = $_POST['num'];
+				$array = explode(",", $num);
+				// if the input is not separated by comma or space
+				// $array = str_split($num);
+				sort($array);
+				$ascending = $array;
+				rsort($array);
+				$descending = $array;
+
+				echo "<h4>Output</h4>";
+				echo "Ascending: ";
+ 				echo implode(",", $ascending);
+ 				echo "<br/>Descending: ";
+ 				echo implode(",", $descending);
+ 				
+ 				//if the output is not separated by comma or space
+ 				//echo "Ascending: ";
+ 				//echo implode("", $ascending);
+ 				//echo "<br/>Descending: ";
+ 				//echo implode("", $descending);
+ 			}
+
+ 			?>
+		</div>
+		<div class="merge">
+			<h4>Merging</h4>
+			<form method="post">
+				<label>Enter first array:</label><br>
+				<input type="text" name="num1"><br><br>
+				<label>Enter second array:</label><br>
+				<input type="text" name="num2"><br><br>
+				<input type="submit" class="btn" name="merge" value="Merge">
+			</form>
+		</div>
+		<div class="output">
+			<?php
+
+ 				if(isset($_POST['merge'])) {
+
+					$num1 = $_POST['num1'];
+					$array1 = explode(',', $num1);
+					$num2 = $_POST['num2'];
+					$array2 = explode(',', $num2);
+					$merged_array = array_merge($array1,$array2);
+					$output = $merged_array;
+
+ 					echo "<h4>Output</h4>";
+ 					foreach ($merged_array as $i) {
+ 	 						echo $i;
+ 					} 
+ 				}
+ 			?>
+		</div>
+	</div>
+</body>
+</html>

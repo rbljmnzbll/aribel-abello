@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EUCLID'S ALGORITHM</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div  class="container">
+		<h3 class="header">Euclid's Algorithm</h3>
+		<div class="count">
+			<form method="post">
+				<label>Enter the first integer:</label><br>
+				<input type="text" name="num1"><br><br>
+				<label>Enter the second integer:</label><br>
+				<input type="text" name="num2"><br><br>
+				<input type="submit" class="btn" name="gcd" value="Calculate GCD">
+			</form>
+		</div>
+		<div class="output">
+			<?php
+
+			if(isset($_POST['gcd'])) {
+
+				$num1 = $_POST['num1'];
+				$num2 = $_POST['num2'];
+				
+				function gcd($num1, $num2){
+					if($num1 == 0)
+						return $num2;
+					return gcd($num2 % $num1, $num1);
+				}
+
+				echo "<h4>Output</h4>";
+				echo "GCD(".$num1.",".$num2.") = ".gcd($num1, $num2);
+			}
+
+ 			?>
+		</div>
+	</div>
+</body>
+</html>
